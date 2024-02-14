@@ -2,6 +2,7 @@ package com.codecamp.newsx.ui.screen.article
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -27,7 +28,7 @@ import kotlinx.coroutines.flow.debounce
 
 @OptIn(FlowPreview::class)
 @Composable
-fun ArticleScreen(viewModel: ArticleViewModel = hiltViewModel()) {
+fun ArticleScreen(paddingValues: PaddingValues,viewModel: ArticleViewModel = hiltViewModel(), onClicked: (Int) -> Unit) {
 
     //fetch & restore scroll position from shared prefs
     val scrollIndex = remember { viewModel.getScrollIndex }
@@ -58,11 +59,11 @@ fun ArticleScreen(viewModel: ArticleViewModel = hiltViewModel()) {
             }
     })
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
         if (lazyArticleItems.itemCount < 1 && lazyArticleItems.loadState.refresh is LoadState.Loading) {
             CircularProgressIndicator(Modifier.align(Alignment.Center))
         } else {
-            ArticleList(lazyListState, lazyArticleItems)
+            ArticleList(lazyListState, lazyArticleItems, onClicked)
         }
         LoadRefreshedData(
             modifier = Modifier

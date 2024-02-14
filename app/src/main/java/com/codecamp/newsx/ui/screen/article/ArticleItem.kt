@@ -61,7 +61,7 @@ fun ArticleItem(onClicked: (Int) -> Unit, article: ArticleEntity) {
                         tint = MaterialTheme.colorScheme.primaryContainer
                     )
                     Spacer(modifier = Modifier.size(6.dp))
-                    Text(text = "Published 2 min ago.")
+                    Text(text = article.date, maxLines = 1)
                 }
                 Spacer(modifier = Modifier.size(10.dp))
             }

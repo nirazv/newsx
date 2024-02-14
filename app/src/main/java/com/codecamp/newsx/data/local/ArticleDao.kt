@@ -20,4 +20,7 @@ interface ArticleDao {
 
     @Query("SELECT ID FROM ARTICLE_ENTITY ORDER BY DATE DESC LIMIT 1")
     fun getObjectTimestamp() : Flow<Int>
+
+    @Query("SELECT * FROM ARTICLE_ENTITY WHERE ID=:id")
+    fun getArticleById(id: Int): Flow<ArticleEntity>
 }
