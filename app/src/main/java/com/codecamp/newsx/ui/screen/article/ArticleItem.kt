@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -52,7 +51,6 @@ fun ArticleItem(onClicked: (Int) -> Unit, article: Article) {
                     modifier = Modifier.padding(vertical = 6.dp),
                     maxLines = 3,
                     fontWeight = FontWeight.Medium,
-                    color = Color.Black,
                     fontSize = 17.sp,
                     text = article.title)
                 Row(verticalAlignment = Alignment.CenterVertically) {
