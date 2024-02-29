@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1024092768047",
+    "project_id": "agresarbharat-795e9",
+    "storage_bucket": "agresarbharat-795e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024092768047:android:dcc7376ba708657cba43da",
+        "android_client_info": {
+          "package_name": "com.codecamp.newsx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHf6E4FRNbQniM4N_wukbExj5Lp1Jk9-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
