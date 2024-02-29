@@ -5,7 +5,6 @@
         <item name="windowSplashScreenBackground">@color/purple_700</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo</item>
         <item name="android:windowSplashScreenBrandingImage">@string/app_name</item>
-        <item name="android:windowSplashScreenAnimationDuration">1000</item>
         <item name="postSplashScreenTheme">@style/Theme.NewsX</item>
     </style>
     <style name="Theme.NewsX" parent="android:Theme.Material.Light.NoActionBar" />

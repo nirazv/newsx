@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -11,10 +12,10 @@ android {
 
     defaultConfig {
         applicationId = "com.codecamp.newsx"
-        minSdk = 33
+        minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -88,7 +89,23 @@ dependencies {
 
     implementation("de.charlex.compose.material3:material3-html-text:2.0.0-beta01")
 
+    //splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // ** adding updates **
+    // Lifecycle utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+
+    //fcm
+//    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+//    implementation("com.google.firebase:firebase-messaging:23.4.1")
+
+    //admob
+//    implementation("com.google.android.gms:play-services-ads:22.6.0")
+
+    //in app updates
+    implementation("com.google.android.play:app-update:2.1.0")
+    implementation("com.google.android.play:app-update-ktx:2.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -20,6 +20,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.codecamp.newsx.ui.navigation.BottomNavStack
 import com.codecamp.newsx.ui.navigation.navStackItems
+import com.codecamp.newsx.ui.theme.iceBergBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,7 +31,9 @@ fun HomeBottomBar(navController: NavController) {
     currentDestination?.let {
         when(it.route) {
             BottomNavStack.Readers.route, BottomNavStack.Recommends.route, BottomNavStack.Settings.route ->
-            NavigationBar {
+            NavigationBar(
+                containerColor = iceBergBlue
+            ) {
                 navStackItems.forEach { item: BottomNavStack ->
                     val isSelected =
                         currentDestination.hierarchy.any { it.route == item.route }

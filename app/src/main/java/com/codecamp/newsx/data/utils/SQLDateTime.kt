@@ -1,6 +1,7 @@
 package com.codecamp.newsx.data.utils
 
 import com.codecamp.newsx.data.local.ArticleEntity
+import com.codecamp.newsx.domain.model.Article
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -23,12 +24,11 @@ fun getTimeAgo(dateTimeString: String): String {
 }
 
 
-fun ArticleEntity.toObjectTime() : ArticleEntity {
-    return ArticleEntity(
+fun ArticleEntity.toObjectTime() : Article {
+    return Article(
         id = this.id,
         date = getTimeAgo(this.date),
         slug = this.slug,
-        content = this.content,
         title = this.title,
         image = this.image
     )

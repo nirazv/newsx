@@ -11,6 +11,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
 import com.codecamp.newsx.ui.screen.nav_reader.NavReaderScreen
 import com.codecamp.newsx.ui.screen.nav_recommend.NavRecommendsScreen
 import com.codecamp.newsx.ui.screen.nav_setting.NavSettingScreen
@@ -19,12 +20,14 @@ import com.codecamp.newsx.ui.screen.paper.PaperScreen
 @Composable
 fun AppNavigation(navController: NavHostController, paddingValues: PaddingValues) {
 
+    val uri = "https://agresarbharat.com/"
+
     NavHost(navController = navController, startDestination = BottomNavStack.Readers.route) {
 
         composable(
             route = BottomNavStack.Readers.route
         ) {
-            NavReaderScreen(paddingValues = paddingValues) {
+            NavReaderScreen() {
                 navController.navigate("paper/${it}")
             }
         }
@@ -36,7 +39,12 @@ fun AppNavigation(navController: NavHostController, paddingValues: PaddingValues
         }
         composable(
             route = "paper/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
+            arguments = listOf(navArgument("id") { type = NavType.IntType }),
+//            deepLinks = listOf(
+//                navDeepLink {
+//                    uriPattern = "$uri/{slug}"
+//                }
+//            )
         ) {
             PaperScreen(it) {
                 navController.popBackStack()

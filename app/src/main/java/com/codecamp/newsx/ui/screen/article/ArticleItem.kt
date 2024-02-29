@@ -23,12 +23,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.codecamp.newsx.R
-import com.codecamp.newsx.data.local.ArticleEntity
+import com.codecamp.newsx.domain.model.Article
 import de.charlex.compose.material3.HtmlText
 
 
 @Composable
-fun ArticleItem(onClicked: (Int) -> Unit, article: ArticleEntity) {
+fun ArticleItem(onClicked: (Int) -> Unit, article: Article) {
     Column {
         Row(
             Modifier

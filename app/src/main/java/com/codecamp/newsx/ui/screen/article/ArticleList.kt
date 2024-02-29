@@ -7,23 +7,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.itemKey
-import com.codecamp.newsx.data.local.ArticleEntity
+import com.codecamp.newsx.domain.model.Article
 
 @Composable
-fun ArticleList(lazyListState: LazyListState, lazyArticleItems: LazyPagingItems<ArticleEntity>, onClicked:(Int) -> Unit) {
+fun ArticleList(lazyListState: LazyListState, lazyArticleItems: LazyPagingItems<Article>, onClicked:(Int) -> Unit) {
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             state = lazyListState
         ) {
-            lazyArticleItems?.let {
-                items(
-                    count = lazyArticleItems.itemCount,
-                    key = lazyArticleItems.itemKey { it.id }
-                ) {
-                    if(lazyArticleItems[it] != null ) {
-                        ArticleItem(onClicked = onClicked, article = lazyArticleItems[it]!!)
-                    }
+            items(
+                count = lazyArticleItems.itemCount,
+                key = lazyArticleItems.itemKey { it.id },
+            ) {
+                if(lazyArticleItems[it] != null ) {
+                    ArticleItem(onClicked = onClicked, article = lazyArticleItems[it]!!)
                 }
             }
         }

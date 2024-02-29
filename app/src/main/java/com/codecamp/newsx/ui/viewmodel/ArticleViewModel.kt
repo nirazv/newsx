@@ -10,6 +10,8 @@ import com.codecamp.newsx.data.local.ArticleEntity
 import com.codecamp.newsx.data.utils.TaskLoadState
 import com.codecamp.newsx.domain.usecase.ArticlePagedUseCase
 import com.codecamp.newsx.prefs.ScrollStatePrefs
+//import com.google.firebase.ktx.Firebase
+//import com.google.firebase.messaging.ktx.messaging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +19,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+//import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,6 +35,9 @@ class ArticleViewModel @Inject constructor(
 
     val selectedTask: MutableStateFlow<TaskLoadState<ArticleEntity>> = MutableStateFlow(TaskLoadState.Loading)
 
+    val title = mutableStateOf("")
+    val slug = mutableStateOf("")
+
     private val itemStackId = mutableIntStateOf(0)
 
     fun setScrollIndex(index: Int) {
@@ -42,6 +48,9 @@ class ArticleViewModel @Inject constructor(
     init {
         renderIsLoadingRefreshed()
         observeTimestamp()
+        viewModelScope.launch {
+//            Firebase.messaging.subscribeToTopic("chat").await()
+        }
     }
 
     private fun renderIsLoadingRefreshed() {
@@ -65,6 +74,8 @@ class ArticleViewModel @Inject constructor(
         viewModelScope.launch {
             articlePagedUseCase.getArticleById(id).collect {
                 selectedTask.value = TaskLoadState.Success(it)
+                title.value = it.title
+                slug.value = it.slug
             }
         }
     }

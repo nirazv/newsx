@@ -12,6 +12,7 @@ import com.codecamp.newsx.data.local.ArticleEntity
 import com.codecamp.newsx.data.paging.ArticleRemoteMediator
 import com.codecamp.newsx.data.remote.ArticleApi
 import com.codecamp.newsx.data.utils.toObjectTime
+import com.codecamp.newsx.domain.model.Article
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -22,7 +23,7 @@ class ArticlePagedUseCase @Inject constructor(
 ){
 
     @OptIn(ExperimentalPagingApi::class)
-    operator fun invoke(): Flow<PagingData<ArticleEntity>> {
+    operator fun invoke(): Flow<PagingData<Article>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 30

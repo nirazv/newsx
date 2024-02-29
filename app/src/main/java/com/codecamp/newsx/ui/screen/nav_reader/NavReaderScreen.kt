@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import com.codecamp.newsx.ui.screen.article.ArticleScreen
 
 @Composable
-fun NavReaderScreen(paddingValues: PaddingValues, onClicked: (Int) -> Unit) {
-    ArticleScreen(paddingValues = paddingValues, onClicked = onClicked)
+fun NavReaderScreen(onClicked: (Int) -> Unit) {
+    ArticleScreen(onClicked = onClicked)
 }
